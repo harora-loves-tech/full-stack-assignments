@@ -5,19 +5,27 @@
  */
 
 function wait1(t) {
-
+    return new Promise(function(resolve) {
+        setTimeout(resolve, t * 1000, t * 1000);
+    });
 }
 
 function wait2(t) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, t * 1000, t * 1000);
+    });
 
 }
 
 function wait3(t) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, t * 1000, t * 1000);
+    });
 
 }
 
 function calculateTime(t1, t2, t3) {
-
+    return Promise.all([wait1(t1), wait2(t2), wait3(t3)]).then(values => values.reduce((accumulator, currentValue) => { return Math.max(accumulator, currentValue) }, values[0]));
 }
 
 module.exports = calculateTime;
